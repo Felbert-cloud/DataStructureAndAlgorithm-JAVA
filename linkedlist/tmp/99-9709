@@ -1,0 +1,8 @@
+/home/yarte/dsa_practice/linkedlist/src/com/example/mypackage/LinkedList.java:58:16,15,remove method has multiple bugs: undeclared tempnode variable at line 64, wrong condition at line 67, and wrong variable used at line 68
+/home/yarte/dsa_practice/linkedlist/src/com/example/mypackage/LinkedList.java:60:9,1,node variable declared but never used correctly; should be tempnode to track node before target index
+/home/yarte/dsa_practice/linkedlist/src/com/example/mypackage/LinkedList.java:64:17,1,tempnode is never declared causing compilation error; should be Node tempnode = null declared before loop
+/home/yarte/dsa_practice/linkedlist/src/com/example/mypackage/LinkedList.java:67:28,1,Wrong condition: index + 1 == i checks one past the target; should be i == index to find node at target index
+/home/yarte/dsa_practice/linkedlist/src/com/example/mypackage/LinkedList.java:68:17,1,Uses node.next which is null; should be tempnode.next to unlink target node
+/home/yarte/dsa_practice/linkedlist/src/com/example/mypackage/LinkedList.java:70:13,1,current = current.next moves past nodes but tempnode assignment happens after check so unlinking logic never fires correctly
+/home/yarte/dsa_practice/linkedlist/src/com/example/mypackage/Main.java:17:39,1,remove(1) returns void but is used in println; either change remove to return int or remove println wrapper
+/home/yarte/dsa_practice/linkedlist/src/com/example/mypackage/LinkedList.java:58:16,1,No edge case handling for removing head (index 0) or tail node; need special logic for head removal and tail pointer update

@@ -1,0 +1,29 @@
+    public void print() {
+        if (this.root == null) {
+            System.out.println("(empty tree)");
+            return;
+        }
+        class Printer {
+            void printNode(Node node, String prefix, boolean isTail, String visual) {
+                System.out.println(prefix + (isTail ? "└── " : "├── ") + visual + node.data);
+                int count = 0;
+                if (node.left != null) {
+                    count++;
+                }
+                if (node.right != null) {
+                    count++;
+                }
+                int c = 0;
+                String childPrefix = prefix + (isTail ? "    " : "│   ");
+                if (node.left != null) {
+                    c++;
+                    printNode(node.left, childPrefix, c == count, "↙── ");
+                }
+                if (node.right != null) {
+                    c++;
+                    printNode(node.right, childPrefix, c == count, "↘── ");
+                }
+            }
+        }
+        new Printer().printNode(this.root, "", true, "●── ");
+    }

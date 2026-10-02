@@ -1,0 +1,239 @@
+<Context>
+You receive a selection in neovim that you need to replace with new code.
+The selection's contents may contain notes, incorporate the notes every time if there are some.
+consider the context of the selection and what you are suppose to be implementing
+<SELECTION_LOCATION>
+range(point(109,5),point(137,6))
+</SELECTION_LOCATION>
+<SELECTION_CONTENT>
+public void print() {
+        if (this.root == null) {
+            System.out.println("(empty tree)");
+            return;
+        }
+        class Printer {
+            void printNode(Node node, String prefix, boolean isTail, String visual) {
+                System.out.println(prefix + (isTail ? "└── " : "├── ") + visual + node.data);
+                int count = 0;
+                if (node.left != null) {
+                    count++;
+                }
+                if (node.right != null) {
+                    count++;
+                }
+                int c = 0;
+                String childPrefix = prefix + (isTail ? "    " : "│   ");
+                if (node.left != null) {
+                    c++;
+                    printNode(node.left, childPrefix, c == count, "↘── ");
+                }
+                if (node.right != null) {
+                    c++;
+                    printNode(node.right, childPrefix, c == count, "↙── ");
+                }
+            }
+        }
+        new Printer().printNode(this.root, "", true, "●── ");
+    }
+</SELECTION_CONTENT>
+<FILE_CONTAINING_SELECTION>
+package com.example.mypackage;
+
+public class Tree {
+    Node root;
+
+    public Tree() {
+        this.root = null;
+    }
+
+    public void insert(int n) {
+        if (this.root == null) {
+            this.root = new Node(n);
+            return;
+        }
+
+        Node current = this.root;
+
+        while (true) {
+            if (current.data < n) {
+                if (current.left == null) {
+                    current.left = new Node(n);
+                    return;
+                } else {
+                    current = current.left;
+                }
+            } else if (current.data > n) {
+                if (current.right == null) {
+                    current.right = new Node(n);
+                    return;
+                } else {
+                    current = current.right;
+                }
+            }
+        }
+
+    }
+
+    public boolean remove(int targetValue) {
+        Node current = this.root;
+        Node prev = current;
+        while (true) {
+            if (current.data == targetValue) {
+                Node deletingNodeLeft = current.left;
+                Node deletingNodeRight = current.right;
+                if (deletingNodeRight == null) {
+                    prev.right = deletingNodeLeft;
+                    return true;
+                }
+                prev.right = deletingNodeRight;
+                return true;
+            }
+            if (current.data < targetValue) {
+                if (this.isDirectionNull(current, "left")) {
+                    return false;
+                }
+                prev = current;
+                current = current.left;
+            } else {
+                if (this.isDirectionNull(current, "right")) {
+                    return false;
+                }
+                prev = current;
+                current = current.right;
+            }
+
+        }
+    }
+
+    private boolean isDirectionNull(Node node, String check) {
+        boolean isLeft = false;
+        if (check == "left") {
+            isLeft = true;
+        }
+
+        if (isLeft) {
+            if (node.left == null) {
+                return true;
+            }
+        }
+        if (!isLeft) {
+            if (node.right == null) {
+                return true;
+            }
+        }
+        return false;
+
+    }
+
+    public boolean search(int target) {
+        Node current = this.root;
+        boolean find = false;
+        while (!find) {
+            if (current.data == target) {
+                find = true;
+                return true;
+            }
+            if (current.right == null && current.left == null) {
+                return false;
+            }
+            if (current.data <= target) {
+                current = current.left;
+            } else if (current.data >= target) {
+                current = current.right;
+            }
+        }
+        return false;
+    }
+
+    public void print() {
+        if (this.root == null) {
+            System.out.println("(empty tree)");
+            return;
+        }
+        class Printer {
+            void printNode(Node node, String prefix, boolean isTail, String visual) {
+                System.out.println(prefix + (isTail ? "└── " : "├── ") + visual + node.data);
+                int count = 0;
+                if (node.left != null) {
+                    count++;
+                }
+                if (node.right != null) {
+                    count++;
+                }
+                int c = 0;
+                String childPrefix = prefix + (isTail ? "    " : "│   ");
+                if (node.left != null) {
+                    c++;
+                    printNode(node.left, childPrefix, c == count, "↘── ");
+                }
+                if (node.right != null) {
+                    c++;
+                    printNode(node.right, childPrefix, c == count, "↙── ");
+                }
+            }
+        }
+        new Printer().printNode(this.root, "", true, "●── ");
+    }
+
+    public void binaryToLinklist() {
+
+    }
+
+}
+</FILE_CONTAINING_SELECTION>
+
+</Context>
+<Prompt>
+                50
+              /    \
+            30      70
+           /  \    /  \
+         20   40  60   80
+        / \          \
+      10  25         65
+
+I want like this.
+</Prompt>
+
+<Location><File>/home/yarte/dsa_practice/binarytree/src/com/example/mypackage/Tree.java</File><Function>range(point(109,5),point(137,6))</Function></Location>
+<FunctionText>public void print() {
+        if (this.root == null) {
+            System.out.println("(empty tree)");
+            return;
+        }
+        class Printer {
+            void printNode(Node node, String prefix, boolean isTail, String visual) {
+                System.out.println(prefix + (isTail ? "└── " : "├── ") + visual + node.data);
+                int count = 0;
+                if (node.left != null) {
+                    count++;
+                }
+                if (node.right != null) {
+                    count++;
+                }
+                int c = 0;
+                String childPrefix = prefix + (isTail ? "    " : "│   ");
+                if (node.left != null) {
+                    c++;
+                    printNode(node.left, childPrefix, c == count, "↘── ");
+                }
+                if (node.right != null) {
+                    c++;
+                    printNode(node.right, childPrefix, c == count, "↙── ");
+                }
+            }
+        }
+        new Printer().printNode(this.root, "", true, "●── ");
+    }</FunctionText>
+<TEMP_FILE>./tmp/99-3638</TEMP_FILE>
+<MustObey>
+NEVER alter any file other than TEMP_FILE.
+never provide the requested changes as conversational output. Return only the code.
+ONLY provide requested changes by writing the change to TEMP_FILE
+
+never attempt to read TEMP_FILE.
+It is purely for output.
+Previous contents, which may not exist, can be written over without worry
+After writing TEMP_FILE once you should be done.  Be done and end the session.
+
+</MustObey>

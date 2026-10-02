@@ -1,0 +1,1 @@
+List<Integer> fruits = new Random().ints(10, 0, 100).boxed().collect(Collectors.toList());

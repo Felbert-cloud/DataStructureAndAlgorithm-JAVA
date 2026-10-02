@@ -1,0 +1,6 @@
+	public T peek() {
+		if (isEmpty()) {
+			return null;
+		}
+		return items[front];
+	}

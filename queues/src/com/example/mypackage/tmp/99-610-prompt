@@ -1,0 +1,82 @@
+<Context>
+You receive a selection in neovim that you need to replace with new code.
+The selection's contents may contain notes, incorporate the notes every time if there are some.
+consider the context of the selection and what you are suppose to be implementing
+<SELECTION_LOCATION>
+range(point(1,1),point(17,2))
+</SELECTION_LOCATION>
+<SELECTION_CONTENT>
+package com.example.mypackage;
+
+public class Person {
+	String name;
+	String age;
+	String address;
+
+	public Person(String person, String age, String address) {
+		this.name = name;
+		this.age = age;
+		this.address = address;
+	}
+
+	public void Introduce() {
+		System.out.println("hello I " + name + " and I am " + this.age + "years old" + "A am from " + address);
+	}
+}
+</SELECTION_CONTENT>
+<FILE_CONTAINING_SELECTION>
+package com.example.mypackage;
+
+public class Person {
+	String name;
+	String age;
+	String address;
+
+	public Person(String person, String age, String address) {
+		this.name = name;
+		this.age = age;
+		this.address = address;
+	}
+
+	public void Introduce() {
+		System.out.println("hello I " + name + " and I am " + this.age + "years old" + "A am from " + address);
+	}
+}
+</FILE_CONTAINING_SELECTION>
+
+</Context>
+<Prompt>
+can you fix the the declared package does not match the expected package.
+
+</Prompt>
+
+<Location><File>/home/yarte/dsa_practice/queues/src/com/example/mypackage/Person.java</File><Function>range(point(1,1),point(17,2))</Function></Location>
+<FunctionText>package com.example.mypackage;
+
+public class Person {
+	String name;
+	String age;
+	String address;
+
+	public Person(String person, String age, String address) {
+		this.name = name;
+		this.age = age;
+		this.address = address;
+	}
+
+	public void Introduce() {
+		System.out.println("hello I " + name + " and I am " + this.age + "years old" + "A am from " + address);
+	}
+}</FunctionText>
+<TEMP_FILE>./tmp/99-610</TEMP_FILE>
+<MustObey>
+NEVER alter any file other than TEMP_FILE.
+never provide the requested changes as conversational output. Return only the code.
+ONLY provide requested changes by writing the change to TEMP_FILE
+
+never attempt to read TEMP_FILE.
+It is purely for output.
+Previous contents, which may not exist, can be written over without worry
+After writing TEMP_FILE once you should be done.  Be done and end the session.
+
+</MustObey>

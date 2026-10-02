@@ -1,0 +1,44 @@
+package com.example.mypackage;
+
+public class Main {
+	public static void main(String[] args) {
+		System.out.println("hello");
+		Queue queue1 = new Queue(3);
+		queue1.In(new Person("name", "18", "usa"));
+		queue1.In(new Person("alice", "25", "canada"));
+		queue1.In(new Person("bob", "30", "uk"));
+
+		Queue queue2 = new Queue(2);
+		queue2.In(new Person("charlie", "22", "australia"));
+		queue2.In(new Person("diana", "28", "india"));
+
+		Queue queue3 = new Queue(1);
+		queue3.In(new Person("eve", "35", "germany"));
+
+		Queue queue4 = new Queue(2);
+		queue4.In(new Person("frank", "20", "france"));
+		queue4.In(new Person("grace", "27", "japan"));
+
+		Queue queue5 = new Queue(2);
+		queue5.In(new Person("henry", "24", "brazil"));
+		queue5.In(new Person("isla", "26", "mexico"));
+
+		Queue queue6 = new Queue(2);
+		queue6.In(new Person("jack", "29", "china"));
+		queue6.In(new Person("kate", "23", "korea"));
+
+		Queue queue7 = new Queue(1);
+		queue7.In(new Person("liam", "31", "ireland"));
+
+		Queue queue8 = new Queue(2);
+		queue8.In(new Person("mia", "21", "italy"));
+		queue8.In(new Person("noah", "32", "netherlands"));
+
+		Queue queue9 = new Queue(1);
+		queue9.In(new Person("olivia", "19", "sweden"));
+
+		Queue queue10 = new Queue(2);
+		queue10.In(new Person("peter", "33", "spain"));
+		queue10.In(new Person("quinn", "34", "portugal"));
+	}
+}

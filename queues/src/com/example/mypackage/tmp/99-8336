@@ -1,0 +1,9 @@
+public static void main(String[] args) {
+		System.out.println("hello");
+		Queue queue1 = new Queue(5);
+		queue1.In(new Person("name", "18", "usa"));
+		queue1.In(new Person("alice", "25", "canada"));
+		queue1.In(new Person("bob", "30", "uk"));
+		queue1.In(new Person("charlie", "22", "australia"));
+		queue1.In(new Person("diana", "28", "india"));
+	}

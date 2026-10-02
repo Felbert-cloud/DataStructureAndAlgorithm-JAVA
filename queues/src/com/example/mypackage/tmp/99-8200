@@ -1,0 +1,12 @@
+	public static void main(String[] args) {
+		System.out.println("hello");
+		Queue queue = new Queue(8);
+		queue.In(new Person("name", "18", "usa"));
+		queue.In(new Person("alice", "25", "canada"));
+		queue.In(new Person("bob", "30", "uk"));
+		queue.In(new Person("charlie", "22", "australia"));
+		queue.In(new Person("diana", "28", "india"));
+		queue.In(new Person("eve", "35", "germany"));
+		queue.In(new Person("frank", "20", "france"));
+		queue.In(new Person("grace", "27", "japan"));
+	}

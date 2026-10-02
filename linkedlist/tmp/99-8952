@@ -1,0 +1,7 @@
+public void fetch() {
+        Node current = this.head;
+        while (current != null) {
+            System.out.println(current.data);
+            current = current.next;
+        }
+    }

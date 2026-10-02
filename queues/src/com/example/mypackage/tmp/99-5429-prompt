@@ -1,0 +1,88 @@
+<Context>
+You receive a selection in neovim that you need to replace with new code.
+The selection's contents may contain notes, incorporate the notes every time if there are some.
+consider the context of the selection and what you are suppose to be implementing
+<SELECTION_LOCATION>
+range(point(7,3),point(7,14))
+</SELECTION_LOCATION>
+<SELECTION_CONTENT>
+queue.In();
+</SELECTION_CONTENT>
+<FILE_CONTAINING_SELECTION>
+package com.example.mypackage;
+
+public class Main {
+	public static void main(String[] args) {
+		System.out.println("hello");
+		Queue queue = new Queue(3);
+		queue.In();
+	}
+}
+</FILE_CONTAINING_SELECTION>
+
+</Context>
+<Prompt>
+can you add more person this is the queue datatype @Queue.java
+
+</Prompt>
+
+```java
+-- Queue.java
+package com.example.mypackage;
+
+import java.security.DrbgParameters.Capability;
+import java.util.ArrayList;
+
+public class Queue {
+	private ArrayList<Person> items;
+	private int capacity;
+
+	public Queue(int capacity) {
+		this.capacity = capacity;
+		items = new ArrayList<Person>();
+	}
+
+	public void In(Person person) {
+		if (this.isFull()) {
+			System.out.println("the queue capacity is full ");
+		} else {
+			items.add(person);
+			System.out.println("the person is added on the queue");
+		}
+	}
+
+	public boolean isFull() {
+		if (this.items.size() >= capacity) {
+			return true;
+		}
+		return false;
+	}
+
+	public void Out() {
+		this.items.remove(0);
+	}
+
+	public void PrintQueue() {
+		System.out.println("this is the queue: ");
+		for (int i = 0; i < this.capacity; i++) {
+			System.out.println(i + 1 + ":" + items.get(i).name);
+		}
+	}
+
+}
+
+```
+<Location><File>/home/yarte/dsa_practice/queues/src/com/example/mypackage/Main.java</File><Function>range(point(7,3),point(7,14))</Function></Location>
+<FunctionText>queue.In();</FunctionText>
+<TEMP_FILE>./tmp/99-5429</TEMP_FILE>
+<MustObey>
+NEVER alter any file other than TEMP_FILE.
+never provide the requested changes as conversational output. Return only the code.
+ONLY provide requested changes by writing the change to TEMP_FILE
+
+never attempt to read TEMP_FILE.
+It is purely for output.
+Previous contents, which may not exist, can be written over without worry
+After writing TEMP_FILE once you should be done.  Be done and end the session.
+
+</MustObey>

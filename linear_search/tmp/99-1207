@@ -1,0 +1,1 @@
+List<String> fruits = List.of("U", "U", "U", "U", "U", "U", "U", "U", "U", "U");

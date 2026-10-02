@@ -1,0 +1,5 @@
+queue.enqueue("start");
+        queue.enqueue("nine");
+        queue.enqueue("four");
+        queue.enqueue("two");
+        queue.enqueue("seven");

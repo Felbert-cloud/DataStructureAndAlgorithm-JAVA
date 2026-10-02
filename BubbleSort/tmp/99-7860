@@ -1,0 +1,19 @@
+        Numbers = new ArrayList<>();
+        Numbers.add(3);
+        Numbers.add(2);
+        Numbers.add(4);
+        Numbers.add(9);
+        Numbers.add(1);
+        Numbers.add(7);
+        System.out.println("this the unsorted list" + Numbers);
+        int n = Numbers.size();
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - 1 - i; j++) {
+                if (Numbers.get(j) > Numbers.get(j + 1)) {
+                    int temp = Numbers.get(j);
+                    Numbers.set(j, Numbers.get(j + 1));
+                    Numbers.set(j + 1, temp);
+                }
+            }
+        }
+        System.out.println("this the sorted list" + Numbers);

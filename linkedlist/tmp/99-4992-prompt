@@ -1,0 +1,188 @@
+<Context>
+You receive a selection in neovim that you need to replace with new code.
+The selection's contents may contain notes, incorporate the notes every time if there are some.
+consider the context of the selection and what you are suppose to be implementing
+<SELECTION_LOCATION>
+range(point(58,5),point(90,6))
+</SELECTION_LOCATION>
+<SELECTION_CONTENT>
+public void remove(int index) {
+        // ❌ Guard: empty list or invalid index → do nothing
+        if (this.head == null || index < 0)
+            return;
+
+        // 🎯 Case 1: Removing the head (index 0)
+        if (index == 0) {
+            this.head = this.head.next;
+            // If list is now empty, clear tail too
+            if (this.head == null)
+                this.tail = null;
+            return;
+        }
+
+        // 🚶 Traverse to the node BEFORE the one we want to remove
+        Node current = this.head;
+        for (int i = 0; i < index - 1 && current.next != null; i++) {
+            current = current.next;
+        }
+
+        // ❌ Index out of bounds → nothing to remove
+        if (current.next == null)
+            return;
+
+        // 🎯 Case 2: Removing the tail → update tail pointer
+        if (current.next == this.tail) {
+            this.tail = current;
+            this.tail.next = null;
+        } else {
+            // 🎯 Case 3: Removing middle node → skip over it
+            current.next = current.next.next;
+        }
+    }
+</SELECTION_CONTENT>
+<FILE_CONTAINING_SELECTION>
+package com.example.mypackage;
+
+public class LinkedList {
+    private Node head;
+    private Node tail;
+
+    public LinkedList() {
+        this.head = null;
+        this.tail = null;
+    }
+
+    public void insertHead(int n) {
+        if (isTailOrHeadNull()) {
+            initialInsert(n);
+            return;
+        }
+        Node lasthead = this.head;// get the lasthead
+        this.head = new Node(n, lasthead);// override the head with the new node and refference the last node
+    }
+
+    private void initialInsert(int n) {
+        this.head = new Node(n, null);
+        this.tail = new Node(n, null);
+        return;
+    }
+
+    public void insertTail(int n) {
+        if (isTailOrHeadNull()) {
+            initialInsert(n);
+        }
+        Node lastTail = this.tail;
+        this.tail = new Node(n, lastTail);
+    }
+
+    private boolean isTailOrHeadNull() {
+        return this.head == null || this.tail == null;
+    }
+
+    public boolean search(int n) {
+        Node current = this.head;
+        while (current != null) {
+            if (current.data == n) {
+                return true;
+            }
+            current = current.next;
+        }
+        return false;
+    }
+
+    public void print() {
+        Node current = this.head;
+        while (current != null) {
+            System.out.println(current.data);
+            current = current.next;
+        }
+    }
+
+    public void remove(int index) {
+        // ❌ Guard: empty list or invalid index → do nothing
+        if (this.head == null || index < 0)
+            return;
+
+        // 🎯 Case 1: Removing the head (index 0)
+        if (index == 0) {
+            this.head = this.head.next;
+            // If list is now empty, clear tail too
+            if (this.head == null)
+                this.tail = null;
+            return;
+        }
+
+        // 🚶 Traverse to the node BEFORE the one we want to remove
+        Node current = this.head;
+        for (int i = 0; i < index - 1 && current.next != null; i++) {
+            current = current.next;
+        }
+
+        // ❌ Index out of bounds → nothing to remove
+        if (current.next == null)
+            return;
+
+        // 🎯 Case 2: Removing the tail → update tail pointer
+        if (current.next == this.tail) {
+            this.tail = current;
+            this.tail.next = null;
+        } else {
+            // 🎯 Case 3: Removing middle node → skip over it
+            current.next = current.next.next;
+        }
+    }
+
+}
+</FILE_CONTAINING_SELECTION>
+
+</Context>
+<Prompt>
+and add what happend on the list.
+</Prompt>
+
+<Location><File>/home/yarte/dsa_practice/linkedlist/src/com/example/mypackage/LinkedList.java</File><Function>range(point(58,5),point(90,6))</Function></Location>
+<FunctionText>public void remove(int index) {
+        // ❌ Guard: empty list or invalid index → do nothing
+        if (this.head == null || index < 0)
+            return;
+
+        // 🎯 Case 1: Removing the head (index 0)
+        if (index == 0) {
+            this.head = this.head.next;
+            // If list is now empty, clear tail too
+            if (this.head == null)
+                this.tail = null;
+            return;
+        }
+
+        // 🚶 Traverse to the node BEFORE the one we want to remove
+        Node current = this.head;
+        for (int i = 0; i < index - 1 && current.next != null; i++) {
+            current = current.next;
+        }
+
+        // ❌ Index out of bounds → nothing to remove
+        if (current.next == null)
+            return;
+
+        // 🎯 Case 2: Removing the tail → update tail pointer
+        if (current.next == this.tail) {
+            this.tail = current;
+            this.tail.next = null;
+        } else {
+            // 🎯 Case 3: Removing middle node → skip over it
+            current.next = current.next.next;
+        }
+    }</FunctionText>
+<TEMP_FILE>./tmp/99-4992</TEMP_FILE>
+<MustObey>
+NEVER alter any file other than TEMP_FILE.
+never provide the requested changes as conversational output. Return only the code.
+ONLY provide requested changes by writing the change to TEMP_FILE
+
+never attempt to read TEMP_FILE.
+It is purely for output.
+Previous contents, which may not exist, can be written over without worry
+After writing TEMP_FILE once you should be done.  Be done and end the session.
+
+</MustObey>
