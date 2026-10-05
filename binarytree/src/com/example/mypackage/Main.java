@@ -18,7 +18,9 @@ class Main {
         tree.remove(64);
         System.out.println("removing 100...");
         tree.print();
-
+        tree.update(41, 45);
+        System.out.println("updating 41...");
+        tree.print();
     }
 
 }

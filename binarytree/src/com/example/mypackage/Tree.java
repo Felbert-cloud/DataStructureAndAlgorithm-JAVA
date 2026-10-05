@@ -1,5 +1,7 @@
 package com.example.mypackage;
 
+import java.awt.Cursor;
+
 public class Tree {
     Node root;
 
@@ -60,6 +62,28 @@ public class Tree {
                     return false;
                 }
                 prev = current;
+                current = current.right;
+            }
+
+        }
+    }
+
+    public boolean update(int targetValue, int newValue) {
+        Node current = this.root;
+        while (true) {
+            if (current.data == targetValue) {
+                current.data = newValue;
+                return false;
+            }
+            if (targetValue < current.data) {
+                if (this.isDirectionNull(current, "left")) {
+                    return false;
+                }
+                current = current.left;
+            } else {
+                if (this.isDirectionNull(current, "right")) {
+                    return false;
+                }
                 current = current.right;
             }
 
